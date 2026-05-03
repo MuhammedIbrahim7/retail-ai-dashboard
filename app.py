@@ -15,7 +15,18 @@ def load_data():
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
+
+
 df = load_data()
+
+# ✅ ADD THIS BLOCK
+df = df.rename(columns={
+    'Total_Sales': 'Sales',
+    'Units_Sold': 'Quantity'
+})
+
+df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+df = df.dropna()
 
 # ==============================
 # SIDEBAR FILTERS
